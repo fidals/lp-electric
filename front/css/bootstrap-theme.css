@@ -326,7 +326,7 @@ body * {
     text-decoration: none;
 }
 
-.mastfoot nav a {
+.mastfoot nav span, .mastfoot nav a {
     text-transform: uppercase;
 }
 

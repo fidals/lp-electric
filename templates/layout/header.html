@@ -1,0 +1,73 @@
+{% load staticfiles %}
+
+<div class="masthead clearfix">
+  <div class="inner">
+    <a href="/" class="masthead-brand">HOFFMANN ELECTRIC LP</a>
+    <nav class="pull-left">
+      <ul class="nav masthead-nav">
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+             aria-haspopup="true" aria-expanded="false">Кухня</a>
+          <ul class="dropdown-menu">
+            <li>
+              <div class="picture"><img src="{% static 'images/pic-menu-1.png' %}" alt="Кофеварки" title="Кофеварки"></div>
+              <div>Кофеварки</div>
+              <a href="#"></a>
+            </li>
+            <li>
+              <div class="picture"><img src="{% static 'images/pic-menu-2.png' %}" alt="Миксеры" title="Миксеры"></div>
+              <div>Миксеры</div>
+              <a href="#"></a>
+            </li>
+            <li>
+              <div class="picture"><img src="{% static 'images/pic-menu-3.png' %}" alt="Соковыжималки" title="Соковыжималки"></div>
+              <div>Соковыжималки</div>
+              <a href="#"></a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+             aria-haspopup="true" aria-expanded="false">Дом</a>
+          <ul class="dropdown-menu">
+            <li>
+              <div class="picture"><img src="{% static 'images/pic-menu-1.png' %}" alt="Утюги" title="Утюги"></div>
+              <div>Утюги</div>
+              <a href="#"></a>
+            </li>
+            <li>
+              <div class="picture"><img src="{% static 'images/pic-menu-2.png' %}" alt="Весы" title="Весы"></div>
+              <div>Весы</div>
+              <a href="#"></a>
+            </li>
+            <li>
+              <div class="picture"><img src="{% static 'images/pic-menu-3.png' %}" alt="Пылесосы" title="Пылесосы"></div>
+              <div>Пылесосы</div>
+              <a href="#"></a>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#">Климат</a></li>
+        <li><a href="#">Аксессуары</a></li>
+        <li><a href="#">Поддержка</a></li>
+      </ul>
+    </nav>
+    <div class="search-line pull-left">
+      <form name="search-line">
+        <div class="form-control">
+          <input type="submit" name="submit" value="">
+          <input type="text" name="s" value="" class="f">
+        </div>
+      </form>
+    </div>
+    <div class="lang-line pull-left">
+      <nav>
+        <ul class="nav">
+          <li><a href="#">EN</a></li>
+          <li><a href="#">GER</a></li>
+          <li class="active"><a href="#">RUS</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
