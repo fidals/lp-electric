@@ -25,6 +25,9 @@ SECRET_KEY = 'p14kp-pivn-_tfqsq$&3^v#dku!p2bz14=l_m9chqih$jf6o3&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# http://bit.ly/sorl-thumbnail-docs
+THUMBNAIL_DEBUG = False
+
 ALLOWED_HOSTS = []
 
 
@@ -37,6 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mptt',
+    'widget_tweaks',
+    'sorl.thumbnail',
+    'images',
+    'pages',
+    'catalog',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -61,6 +70,8 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -119,3 +130,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+ASSETS_DIR = os.path.join(BASE_DIR, 'assets')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'front/build'),
+    ASSETS_DIR,
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOCALHOST = 'http://127.0.0.1:8000/'
+BASE_URL = 'https://www.shopelectro.ru'
+
+PLACEHOLDER_IMAGE = 'images/common/logo.svg'
+PLACEHOLDER_ALT = 'Логотип компании Hoffman Electric LP'
+
+# For sitemaps and sites framework
+SITE_ID = 1
+SITE_DOMAIN_NAME = 'www.shopelectro.ru'

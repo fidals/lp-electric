@@ -1,0 +1,7 @@
+Django==1.9.5
+django-mptt==0.8.3
+django-widget-tweaks
+unidecode
+sorl-thumbnail==12.4a1
+-e git+https://github.com/fidals/refarm-catalog.git#egg=refarm-catalog
+-e git+https://github.com/fidals/refarm-site.git#egg=refarm-site
