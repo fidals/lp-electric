@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+from datetime import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,7 +35,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin.apps.SimpleAdminConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.messages',
@@ -44,12 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.admin',
     'mptt',
     'widget_tweaks',
     'sorl.thumbnail',
     'images',
     'pages',
     'catalog',
+    'lp_electric',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -69,7 +71,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': False,
+        'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -155,3 +157,38 @@ PLACEHOLDER_ALT = 'Логотип компании Hoffman Electric LP'
 # For sitemaps and sites framework
 SITE_ID = 1
 SITE_DOMAIN_NAME = 'www.shopelectro.ru'
+
+# Autocomplete and search settings
+SEARCH_SEE_ALL_LABEL = 'Смотреть все результаты'
+
+SITE_CREATED = datetime(year=2016, month=10, day=25)
+
+# Some defaults for autocreation struct pages: index, catalog tree
+# Pages with this data are created in DB only once.
+PAGES = {
+    'index': {
+        'slug': 'index',
+        'route': 'index',
+        'title': 'LP Electric',
+        'h1': 'LP Electric',
+        'menu_title': 'Главная',
+        'date_published': SITE_CREATED,
+    },
+    'category_tree': {
+        'slug': 'category_tree',
+        'route': 'category_tree',
+        'title': 'Каталог товаров',
+        'menu_title': 'Каталог',
+        'date_published': SITE_CREATED,
+    },
+    'search': {
+        'slug': 'search',
+        'title': 'Результаты поиска',
+        'date_published': SITE_CREATED,
+    },
+    'order': {
+        'slug': 'order',
+        'title': 'Корзина Интернет-магазин shopelectro.ru Санкт-Петербург',
+        'date_published': SITE_CREATED,
+    },
+}

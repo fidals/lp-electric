@@ -13,11 +13,34 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic.base import TemplateView
 
+from lp_electric.views import Autocomplete, Search
+
+
+catalog_urls = [
+    # url(r'^$', catalog.CategoryTree.as_view(), name='category_tree'),
+    # url(r'^categories/(?P<slug>[\w-]+)/$',
+    #     catalog.CategoryPage.as_view(), name='category'),
+    # url(r'^categories/(?P<slug>[\w-]+)/(?P<sorting>[0-9]*)/$',
+    #     catalog.CategoryPage.as_view(), name='category'),
+    # url(r'categories/(?P<category_slug>[\w-]+)/load-more/'
+    #     r'(?P<offset>[0-9]+)/(?P<sorting>[0-9]*)/$',
+    #     catalog.load_more, name='load_more'),
+    # url(r'^products/(?P<product_id>[0-9]+)/$',
+    #     catalog.ProductPage.as_view(), name='product'),
+    # url(r'^no-images/$', catalog.ProductsWithoutImages.as_view(),
+    #     name='products_without_images'),
+    # url(r'^no-text/$', catalog.ProductsWithoutText.as_view(),
+    #     name='products_without_text'),
+]
+
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='index.html')),
+    url(r'^admin/', admin.site.urls),
+    url(r'^catalog/', include(catalog_urls)),
+    url(r'^search/autocomplete/$', Autocomplete.as_view(), name='autocomplete'),
+    url(r'^search/$', Search.as_view(), name='search'),
 ]
