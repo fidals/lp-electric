@@ -1,0 +1,66 @@
+.cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    border-top: 11px solid #ff6300;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.cover .slider {
+    width: 100%;
+    height: 100%;
+}
+
+.cover .slick-slider .slick-track,
+.cover .slick-slider .slick-list {
+    height: 100%;
+}
+
+.cover .slider .one-slide {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.cover .slider .slick-arrow {
+    margin-top: -90px;
+    width: 48px;
+    height: 86px;
+    z-index: 1;
+}
+
+.cover .slider .slick-prev {
+    left: 40px;
+}
+
+.cover .slider .slick-next {
+    right: 40px;
+}
+
+.cover .slider .slick-prev:before,
+.cover .slider .slick-next:before {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 86px;
+    background: transparent no-repeat center center;
+    transition: .2s;
+}
+
+.cover .slider .slick-prev:before {
+    background-image: url(/static/images/icon-arrow-left.png);
+}
+
+.cover .slider .slick-prev:hover:before,
+.cover .slider .slick-prev:hover:after {
+    transition: .2s;
+}
+
+.cover .slider .slick-next:before {
+    background-image: url(/static/images/icon-arrow-right.png);
+}

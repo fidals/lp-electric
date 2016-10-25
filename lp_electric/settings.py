@@ -34,12 +34,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'django.contrib.admin.apps.SimpleAdminConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.redirects',
+    'django.contrib.sessions',
+    'django.contrib.sitemaps',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     'mptt',
     'widget_tweaks',
     'sorl.thumbnail',
@@ -64,8 +68,8 @@ ROOT_URLCONF = 'lp_electric.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -135,7 +139,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 ASSETS_DIR = os.path.join(BASE_DIR, 'assets')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'front/build'),
+    os.path.join(BASE_DIR, 'front'),
     ASSETS_DIR,
 ]
 
