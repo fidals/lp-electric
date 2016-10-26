@@ -149,14 +149,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOCALHOST = 'http://127.0.0.1:8000/'
-BASE_URL = 'https://www.shopelectro.ru'
+BASE_URL = 'https://127.0.0.1'
 
 PLACEHOLDER_IMAGE = 'images/common/logo.svg'
 PLACEHOLDER_ALT = 'Логотип компании Hoffman Electric LP'
 
 # For sitemaps and sites framework
 SITE_ID = 1
-SITE_DOMAIN_NAME = 'www.shopelectro.ru'
+SITE_DOMAIN_NAME = '127.0.0.1'
 
 # Autocomplete and search settings
 SEARCH_SEE_ALL_LABEL = 'Смотреть все результаты'

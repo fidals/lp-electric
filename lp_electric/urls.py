@@ -22,10 +22,8 @@ from lp_electric import views
 
 catalog_urls = [
     url(r'^$', views.CategoryTree.as_view(), name='category_tree'),
-    url(r'^categories/(?P<slug>[\w-]+)/$',
-        views.CategoryPage.as_view(), name='category'),
-    url(r'^categories/(?P<slug>[\w-]+)/(?P<sorting>[0-9]*)/$',
-        views.CategoryPage.as_view(), name='category'),
+    url(r'^categories/(?P<category_id>[0-9]+)/$',
+        views.category_page, name='category'),
     url(r'^products/(?P<product_id>[0-9]+)/$',
         views.ProductPage.as_view(), name='product'),
     # url(r'^no-images/$', views.ProductsWithoutImages.as_view(),

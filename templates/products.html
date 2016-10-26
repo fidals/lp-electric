@@ -1,0 +1,21 @@
+<div class="items">
+  {% for product in  %}
+    <div class="item">
+      <div class="pseudo-table">
+        <div class="pseudo-tr">
+          <div class="pseudo-td">
+            <img src="{{ product.page.main_image }}">
+          </div>
+          <div class="pseudo-td">
+            <div class="description">
+              <h3>{{ product.name }}</h3>
+              <p>Дополнительная информация</p>
+              <p class="more">Подробнее <i class="fa fa-angle-right" aria-hidden="true"></i></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="{{ product.url }}"></a>
+    </div>
+  {% endfor %}
+</div>

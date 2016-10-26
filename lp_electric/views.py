@@ -6,6 +6,7 @@ All logic should live in respective applications.
 """
 from django.conf import settings
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render
 
 from catalog.views import catalog, search
 from lp_electric.models import Category, Product
@@ -40,37 +41,11 @@ class CategoryTree(catalog.CategoryTree):
     model = Category
 
 
-class CategoryPage(catalog.CategoryPage):
-    """
-    Override model attribute to SE-specific Category.
-
-    Extend get_context_data.
-    """
-    model = Category
-
-    # def get_context_data(self, **kwargs):
-    #     """Extended method. Add sorting options and view_types."""
-    #     context = super(CategoryPage, self).get_context_data(**kwargs)
-    #     category = self.get_object()
-    #
-    #     sorting = int(self.kwargs.get('sorting', 0))
-    #     sorting_option = config.category_sorting(sorting)
-    #
-    #     # if there is no view_type specified, default will be tile
-    #     view_type = self.request.session.get('view_type', 'tile')
-    #     products, total_count = (
-    #         category.get_recursive_products_with_count(sorting=sorting_option)
-    #     )
-    #
-    #     return {
-    #         **context,
-    #         'products': products,
-    #         'total_products': total_count,
-    #         'sorting_options': config.category_sorting(),
-    #         'sort': sorting,
-    #         'view_type': view_type,
-    #         'page': category.page,
-    #     }
+def category_page(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    return render(request, 'category.html', {
+        'category': category,
+    })
 
 
 class ProductPage(catalog.ProductPage):

@@ -16,7 +16,7 @@ class Category(AbstractCategory):
 
     def get_absolute_url(self):
         """Return url for model."""
-        return reverse('category', args=(self.slug,))
+        return reverse('category', args=(self.id,))
 
 
 class Product(AbstractProduct):
