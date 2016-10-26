@@ -778,3 +778,7 @@ font-size: 12px;
 .pseudo-table .contacts {
     padding-top: 30px;
 }
+
+.autocomplete-suggestion {
+    z-index: 1000;
+}

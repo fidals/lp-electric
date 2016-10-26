@@ -5,6 +5,7 @@ NOTE: They all should be 'zero-logic'.
 All logic should live in respective applications.
 """
 from django.conf import settings
+from django.http import JsonResponse
 
 from catalog.views import catalog, search
 from lp_electric.models import Category, Product
@@ -24,6 +25,13 @@ class Autocomplete(search.Autocomplete):
     model_map = MODEL_MAP
     see_all_label = settings.SEARCH_SEE_ALL_LABEL
     search_url = 'search'
+
+    def get(self, request):
+        term = request.GET.get('term')
+
+        products = Product.objects.filter(name__icontains=term).values_list('name')
+        products = [product[0] for product in products]
+        return JsonResponse(products, safe=False)
 
 
 # --------- catalog -----------
