@@ -3,78 +3,19 @@
 {% block content %}
   <div class="inner container">
     <div class="catalog-list">
-      {% for category in category.get_children_sorted_by_position %}
+    {% if children %}
+      {% for category in children %}
         <h2>{{ category.name }}</h2>
         {% include 'products.html' with category=category only %}
       {% endfor %}
-
-      <h2>Духовки</h2>
-      <div class="items">
-          <div class="item">
-              <div class="pseudo-table">
-                  <div class="pseudo-tr">
-                      <div class="pseudo-td">
-                          <img src="/images/good1.jpg">
-                      </div>
-                      <div class="pseudo-td">
-                          <div class="description">
-                              <h2>Электрическая и газовая плита</h2>
-                              <p>Дополнительная информация</p>
-                              <p class="more">Подробнее <i class="fa fa-angle-right" aria-hidden="true"></i></p>
-                          </div>
-                      </div>
-                      <div class="pseudo-td">
-                          <p class="price">15 000 <span>руб.</span></p>
-                      </div>
-                  </div>
-              </div>
-              <a href="#"></a>
-          </div>
-          <div class="item">
-              <div class="pseudo-table">
-                  <div class="pseudo-tr">
-                      <div class="pseudo-td">
-                          <img src="/images/good1.jpg">
-                      </div>
-                      <div class="pseudo-td">
-                          <div class="description">
-                              <h2>Электрическая и газовая плита</h2>
-                              <p>Дополнительная информация</p>
-                              <p class="more">Подробнее <i class="fa fa-angle-right" aria-hidden="true"></i></p>
-                          </div>
-                      </div>
-                      <div class="pseudo-td">
-                          <p class="price">15 000 <span>руб.</span></p>
-                      </div>
-                  </div>
-              </div>
-              <a href="#"></a>
-          </div>
-          <div class="item">
-              <div class="pseudo-table">
-                  <div class="pseudo-tr">
-                      <div class="pseudo-td">
-                          <img src="/images/good1.jpg">
-                      </div>
-                      <div class="pseudo-td">
-                          <div class="description">
-                              <h2>Электрическая и газовая плита</h2>
-                              <p>Дополнительная информация</p>
-                              <p class="more">Подробнее <i class="fa fa-angle-right" aria-hidden="true"></i></p>
-                          </div>
-                      </div>
-                      <div class="pseudo-td">
-                          <p class="price">15 000 <span>руб.</span></p>
-                      </div>
-                  </div>
-              </div>
-              <a href="#"></a>
-          </div>
-        </div>
-        <div class="catalog-description">
-          <h2>Сделано в России</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
+    {% else %}
+      <h1>{{ category.name }}</h1>
+      {% include 'products.html' with category=category only %}
+    {% endif %}
+     <div class="catalog-description">
+        <h2>Сделано в России</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
     </div>
+  </div>
 {% endblock %}

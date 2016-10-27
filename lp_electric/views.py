@@ -43,8 +43,12 @@ class CategoryTree(catalog.CategoryTree):
 
 def category_page(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
+    children = category.get_children_sorted_by_position().values()
+    for c in children:
+        c['products'] = Category.objects.get(pk=c['id']).products.all()
     return render(request, 'category.html', {
         'category': category,
+        'children': children,
     })
 
 

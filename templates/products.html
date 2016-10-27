@@ -1,10 +1,10 @@
 <div class="items">
-  {% for product in category.products %}
+  {% for product in category.products.all %}
     <div class="item">
       <div class="pseudo-table">
         <div class="pseudo-tr">
           <div class="pseudo-td">
-            <img src="{{ product.page.main_image }}">
+            <img src="{{ product.page.main_image }}" width="138">
           </div>
           <div class="pseudo-td">
             <div class="description">
@@ -12,6 +12,8 @@
               <p>Дополнительная информация</p>
               <p class="more">Подробнее <i class="fa fa-angle-right" aria-hidden="true"></i></p>
             </div>
+          </div>
+          <div class="pseudo-td">
           </div>
         </div>
       </div>
