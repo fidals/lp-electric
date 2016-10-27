@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 from datetime import datetime
+from collections import OrderedDict
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -168,27 +169,72 @@ SITE_CREATED = datetime(year=2016, month=10, day=25)
 PAGES = {
     'index': {
         'slug': 'index',
-        'route': 'index',
         '_title': 'LP Electric',
         'h1': 'LP Electric',
         '_menu_title': 'Главная',
-        '_date_published': SITE_CREATED,
+        'date_published': SITE_CREATED,
     },
     'category_tree': {
         'slug': 'category_tree',
-        'route': 'category_tree',
         '_title': 'Каталог товаров',
         '_menu_title': 'Каталог',
-        '_date_published': SITE_CREATED,
+        'date_published': SITE_CREATED,
     },
     'search': {
         'slug': 'search',
         '_title': 'Результаты поиска',
-        '_date_published': SITE_CREATED,
+        'date_published': SITE_CREATED,
     },
     'order': {
         'slug': 'order',
         '_title': 'Корзина Интернет-магазин shopelectro.ru Санкт-Петербург',
-        '_date_published': SITE_CREATED,
+        'date_published': SITE_CREATED,
     },
 }
+
+# Custom categories for autocreation with data migrations.
+# We need OrderedDict here because of 'parent' key on child items
+CATEGORIES = OrderedDict([
+    ('kitchen', {
+        'slug': 'index',
+        'name': 'Кухня',
+    }),
+    ('coffee_makers', {
+        'slug': 'coffee-makers',
+        'name': 'Кофеварки',
+        'parent': 'kitchen',
+    }),
+    ('mixers', {
+        'slug': 'mixers',
+        'name': 'Миксеры',
+        'parent': 'kitchen',
+    }),
+    ('juicers', {
+        'slug': 'juicers',
+        'name': 'Соковыжималки',
+        'parent': 'kitchen',
+    }),
+    ('house', {
+        'slug': 'house',
+        'name': 'Дом',
+    }),
+    ('irons', {
+        'slug': 'irons',
+        'name': 'Утюги',
+        'parent': 'house',
+    }),
+    ('libra', {
+        'slug': 'libra',
+        'name': 'Весы',
+        'parent': 'house',
+    }),
+    ('vacuum_cleaners', {
+        'slug': 'vacuum-cleaners',
+        'name': 'Пылесосы',
+        'parent': 'house',
+    }),
+    ('accessories', {
+        'slug': 'accessories',
+        'name': 'Аксессуары',
+    }),
+])

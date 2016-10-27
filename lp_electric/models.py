@@ -2,9 +2,10 @@ from django.db import models
 from django.core.urlresolvers import reverse
 
 from catalog.models import AbstractProduct, AbstractCategory
+from pages.models import PageMixin
 
 
-class Category(AbstractCategory):
+class Category(AbstractCategory, PageMixin):
     """
     SE-specific Category model.
 
@@ -14,12 +15,21 @@ class Category(AbstractCategory):
     """
     product_relation = 'products'
 
+    # TODO - maybe just remove it
+    # @classmethod
+    # def get_default_parent(cls):
+    #     return CustomPage.objects.get(slug='catalog')
+
+    @property
+    def products(self):
+        return Product.objects.get_products_by_category(self)
+
     def get_absolute_url(self):
         """Return url for model."""
         return reverse('category', args=(self.id,))
 
 
-class Product(AbstractProduct):
+class Product(AbstractProduct, PageMixin):
     """
     SE-specific Product model.
 
