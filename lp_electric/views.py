@@ -59,6 +59,7 @@ class ProductPage(catalog.ProductPage):
     Extend get_context_data.
     """
     model = Product
+    template_name = 'product.html'
 
     # def get_context_data(self, **kwargs):
     #     """Extended method. Add product's images to context.."""
