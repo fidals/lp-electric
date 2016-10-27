@@ -198,43 +198,57 @@ CATEGORIES = OrderedDict([
     ('kitchen', {
         'slug': 'index',
         'name': 'Кухня',
+        'position': 0,
     }),
     ('coffee_makers', {
         'slug': 'coffee-makers',
         'name': 'Кофеварки',
         'parent': 'kitchen',
+        'position': 0,
     }),
     ('mixers', {
         'slug': 'mixers',
         'name': 'Миксеры',
         'parent': 'kitchen',
+        'position': 1,
     }),
     ('juicers', {
         'slug': 'juicers',
         'name': 'Соковыжималки',
         'parent': 'kitchen',
+        'position': 2,
     }),
     ('house', {
         'slug': 'house',
         'name': 'Дом',
+        'position': 1,
     }),
     ('irons', {
         'slug': 'irons',
         'name': 'Утюги',
         'parent': 'house',
+        'position': 0,
     }),
     ('libra', {
         'slug': 'libra',
         'name': 'Весы',
         'parent': 'house',
+        'position': 1,
     }),
     ('vacuum_cleaners', {
         'slug': 'vacuum-cleaners',
         'name': 'Пылесосы',
         'parent': 'house',
+        'position': 2,
+    }),
+    ('climate', {
+        'slug': 'climate',
+        'name': 'Климат',
+        'position': 2,
     }),
     ('accessories', {
         'slug': 'accessories',
         'name': 'Аксессуары',
+        'position': 3,
     }),
 ])

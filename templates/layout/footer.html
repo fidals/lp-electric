@@ -1,3 +1,7 @@
+{% load lp_extras %}
+
+{% roots as root_categories %}
+
 <div class="mastfoot">
   <div class="inner">
     <div class="phone"><a href="tel:88001111111">8 800 111 11 11</a></div>
@@ -21,9 +25,9 @@
       <nav class="pull-left">
         <a href="#" class="title">Каталог</a>
         <ul class="nav">
-          <li><a href="#">Кухня</a></li>
-          <li><a href="#">Дом</a></li>
-          <li><a href="#">Климат</a></li>
+          {% for category in root_categories %}
+            <li><a href="{{ category.url }}">{{ category.name }}</a></li>
+          {% endfor %}
         </ul>
       </nav>
     </div>
