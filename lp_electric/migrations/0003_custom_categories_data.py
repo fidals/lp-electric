@@ -11,7 +11,6 @@ from pages.models import ModelPage
 
 def set_custom_categories(apps, schema_editor):
     appended = {}
-    print(settings.CATEGORIES)
     for key, fields in settings.CATEGORIES.items():
         parent = None
         if 'parent' in fields.keys():
@@ -19,7 +18,8 @@ def set_custom_categories(apps, schema_editor):
             parent = appended[parent_index]
         page = ModelPage.objects.create(
             slug=fields['slug'],
-            position=fields['position']
+            position=fields['position'],
+            h1=fields['name']
         )
         category = Category.objects.create(
             name=fields['name'],

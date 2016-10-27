@@ -2,7 +2,7 @@ from django.db import models
 from django.core.urlresolvers import reverse
 
 from catalog.models import AbstractProduct, AbstractCategory
-from pages.models import PageMixin
+from pages.models import PageMixin, ModelPage
 
 
 class Category(AbstractCategory, PageMixin):
@@ -14,11 +14,6 @@ class Category(AbstractCategory, PageMixin):
     superclass.
     """
     product_relation = 'products'
-
-    # TODO - maybe just remove it
-    # @classmethod
-    # def get_default_parent(cls):
-    #     return CustomPage.objects.get(slug='catalog')
 
     @property
     def products(self):
@@ -44,3 +39,39 @@ class Product(AbstractProduct, PageMixin):
 
     def get_absolute_url(self):
         return reverse('product', args=(self.id,))
+
+
+def create_model_page_managers(*args: [models.Model]):
+    """Create managers for dividing ModelPage entities"""
+    def is_correct_arg(arg):
+        return isinstance(arg, type(models.Model))
+
+    assert all(map(is_correct_arg, args)), 'args should be ModelBase type'
+
+    def create_manager(model):
+        class ModelPageManager(models.Manager):
+            def get_queryset(self):
+                return super(ModelPageManager, self).get_queryset().filter(
+                    related_model_name=model._meta.db_table)
+        return ModelPageManager
+
+    return [create_manager(model) for model in args]
+
+
+CategoryPageManager, ProductPageManager = create_model_page_managers(Category, Product)
+
+
+class CategoryPage(ModelPage):
+    """Create proxy model for Admin"""
+    class Meta(ModelPage.Meta):
+        proxy = True
+
+    objects = CategoryPageManager()
+
+
+class ProductPage(ModelPage):
+    """Create proxy model for Admin"""
+    class Meta(ModelPage.Meta):
+        proxy = True
+
+    objects = ProductPageManager()

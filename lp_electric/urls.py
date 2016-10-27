@@ -32,6 +32,8 @@ catalog_urls = [
     #     name='products_without_text'),
 ]
 
+admin.autodiscover()
+
 urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='index.html')),
     url(r'^admin/', admin.site.urls),
