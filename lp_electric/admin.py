@@ -66,8 +66,7 @@ class ImageInline(GenericStackedInline):
             'classes': ('primary-chars', ),
             'fields': (
                 ('picture', 'image'),
-                # 'slug', TODO in dev-775
-                ('_title', 'is_main'),
+                ('slug', '_title', 'is_main'),
                 ('description', ),
             ),
         }),
@@ -289,7 +288,7 @@ class ProductPageAdmin(PageAdmin):
 class CategoryPageAdmin(PageAdmin):
     inlines = [
         CategoryInline,
-        ImageInline
+        # ImageInline
     ]
 
     search_fields = ['h1', 'parent__h1']

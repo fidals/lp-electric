@@ -158,7 +158,7 @@ PLACEHOLDER_ALT = 'Логотип компании Hoffman Electric LP'
 
 # For sitemaps and sites framework
 SITE_ID = 1
-SITE_DOMAIN_NAME = '127.0.0.1'
+SITE_DOMAIN_NAME = '127.0.0.1:8000'
 
 # Autocomplete and search settings
 SEARCH_SEE_ALL_LABEL = 'Смотреть все результаты'
