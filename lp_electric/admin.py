@@ -4,7 +4,8 @@ from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.utils.html import format_html
 
-from lp_electric.models import Category, Product, CategoryPage, ProductPage
+from lp_electric.models import (
+    Category, Product, CategoryPage, ProductPage, Property)
 from pages.models import CustomPage, FlatPage
 from images.models import Image
 
@@ -77,6 +78,16 @@ class ImageInline(GenericStackedInline):
             '<img src="{url}" class="images-item">',
             url=obj.image.url
         )
+
+
+class PropertyInline(admin.StackedInline):
+    model = Property
+    fieldsets = ((None, {
+        'classes': ('primary-chars',),
+        'fields': (
+            ('name', 'value'),
+        )
+    }),)
 
 
 # --------------------- Model admin classes ---------------------
@@ -239,6 +250,7 @@ class ProductPageAdmin(PageAdmin):
     inlines = [
         ProductInline,
         ImageInline,
+        PropertyInline
     ]
 
     list_filter = ['is_active']

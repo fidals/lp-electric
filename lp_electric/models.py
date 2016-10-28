@@ -2,7 +2,7 @@ from django.db import models
 from django.core.urlresolvers import reverse
 
 from catalog.models import AbstractProduct, AbstractCategory
-from pages.models import PageMixin, ModelPage
+from pages.models import PageMixin, ModelPage, Page
 
 
 class Category(AbstractCategory, PageMixin):
@@ -75,3 +75,14 @@ class ProductPage(ModelPage):
         proxy = True
 
     objects = ProductPageManager()
+
+
+class Property(models.Model):
+
+    name = models.CharField(max_length=255)
+    value = models.CharField(max_length=500)
+
+    page = models.ForeignKey(
+        Page, on_delete=models.CASCADE, default=None,
+        related_name='properties', db_index=True
+    )
