@@ -50,6 +50,7 @@ def category_page(request, category_id):
     return render(request, 'category.html', {
         'category': category,
         'children': children,
+        'page': category.page,
     })
 
 

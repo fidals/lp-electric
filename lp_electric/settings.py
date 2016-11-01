@@ -217,16 +217,16 @@ FLAT_PAGES = {
         'parent': 'jobs',
     },
     'about': {
-        'slug': 'category_tree',
+        'slug': 'about',
         '_title': 'О нас',
         'h1': 'О нас',
         '_menu_title': 'О нас',
         'date_published': SITE_CREATED,
     },
     'contacts': {
-        'slug': 'search',
-        '_title': 'Результаты поиска',
-        'h1': 'Результаты поиска',
+        'slug': 'contacts',
+        '_title': 'Контакты',
+        'h1': 'Контакты',
         'date_published': SITE_CREATED,
     },
     'conditions': {
