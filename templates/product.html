@@ -37,13 +37,14 @@
   <div class="row grey">
     <div class="dr-tovary">
       <ul>
-        <li class="other-tovar-item"><a href="#"><img src="images/other-tovar.png" alt=""><p>Название</p></a></li>
-        <li class="other-tovar-item"><a href="#"><img src="images/other-tovar.png" alt=""><p>Lorem Ipsum Dolor sit Amet</p></a></li>
-        <li class="other-tovar-item"><a href="#"><img src="images/other-tovar.png" alt=""><p>Название</p></a></li>
-        <li class="other-tovar-item"><a href="#"><img src="images/other-tovar.png" alt=""><p>Lorem Ipsum Dolor sit Amet</p></a></li>
-        <li class="other-tovar-item"><a href="#"><img src="images/other-tovar.png" alt=""><p>Название</p></a></li>
-        <li class="other-tovar-item"><a href="#"><img src="images/other-tovar.png" alt=""><p>Lorem Ipsum Dolor sit Amet</p></a></li>
-        <li class="other-tovar-item"><a href="#"><img src="images/other-tovar.png" alt=""><p>Название</p></a></li>
+        {% for sibling in product.siblings.all %}
+          <li class="other-tovar-item">
+            <a href="{{ sibling.url }}">
+              <img src="{{ sibling.page.main_image.url }}" alt="{{ sibling.name }}">
+              <p>{{ sibling.name }}</p>
+            </a>
+          </li>
+        {% endfor %}
       </ul>
     </div>
   </div>

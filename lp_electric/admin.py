@@ -26,6 +26,7 @@ class ProductInline(admin.StackedInline):
             ('name', 'id'),
             ('category', 'correct_category_id'),
             ('in_stock', 'is_popular'),
+            ('sibling', ),
         )
     }),)
 

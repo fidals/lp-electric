@@ -728,12 +728,13 @@ body * {
  }
 
 .dr-tovary ul li{
-     width: 100px;
-     height: 100px;
-     display: inline-block;
-     margin-right: 40px;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin-right: 40px;
     vertical-align: top;
- }
+    border: 1px solid #ff6400;
+}
 
 .dr-tovary ul li a:link{
      color: #a0a0a0;
@@ -744,7 +745,8 @@ body * {
     text-decoration: none;
 }
 .dr-tovary ul li img{
-    max-width: 100px;
+    max-width: 98px;
+    min-height: 98px;
 }
 
 .dr-tovary ul li p{

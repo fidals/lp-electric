@@ -37,8 +37,21 @@ class Product(AbstractProduct, PageMixin):
         related_name='products', db_index=True
     )
 
+    sibling = models.ForeignKey(
+        'Product', on_delete=models.DO_NOTHING, null=True, blank=True,
+        related_name='siblings', db_index=True
+    )
+
     def get_absolute_url(self):
         return reverse('product', args=(self.id,))
+
+    def save(self, *args, **kwargs):
+        if self.sibling == self:
+            self.sibling = None
+        super(Product, self).save(*args, **kwargs)
+        if self.sibling and self.sibling.sibling != self:
+            self.sibling.sibling = self
+            self.sibling.save()
 
 
 def create_model_page_managers(*args: [models.Model]):
