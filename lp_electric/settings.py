@@ -167,7 +167,7 @@ SITE_CREATED = datetime(year=2016, month=10, day=25)
 
 # Some defaults for autocreation struct pages: index, catalog tree
 # Pages with this data are created in DB only once.
-PAGES = {
+CUSTOM_PAGES = {
     'index': {
         'slug': 'index',
         '_title': 'LP Electric',
@@ -193,6 +193,61 @@ PAGES = {
         '_title': 'Вакансии',
         'h1': 'Вакансии',
         '_menu_title': 'Вакансии',
+        'date_published': SITE_CREATED,
+    },
+}
+
+# Some defaults for autocreation struct pages: index, catalog tree
+# Pages with this data are created in DB only once.
+FLAT_PAGES = {
+    'proger': {
+        'slug': 'proger',
+        '_title': 'Прогер',
+        'h1': 'Прогер',
+        '_menu_title': 'Прогер',
+        'date_published': SITE_CREATED,
+        'parent': 'jobs',
+    },
+    'seller': {
+        'slug': 'seller',
+        '_title': 'Продавец-консультант',
+        'h1': 'Продавец-консультант',
+        '_menu_title': 'Продавец-консультант',
+        'date_published': SITE_CREATED,
+        'parent': 'jobs',
+    },
+    'about': {
+        'slug': 'category_tree',
+        '_title': 'О нас',
+        'h1': 'О нас',
+        '_menu_title': 'О нас',
+        'date_published': SITE_CREATED,
+    },
+    'contacts': {
+        'slug': 'search',
+        '_title': 'Результаты поиска',
+        'h1': 'Результаты поиска',
+        'date_published': SITE_CREATED,
+    },
+    'conditions': {
+        'slug': 'conditions',
+        '_title': 'Условия работы',
+        'h1': 'Условия работы',
+        '_menu_title': 'Условия работы',
+        'date_published': SITE_CREATED,
+    },
+    'shipment': {
+        'slug': 'shipment',
+        '_title': 'Доставка',
+        'h1': 'Доставка',
+        '_menu_title': 'Доставка',
+        'date_published': SITE_CREATED,
+    },
+    'support': {
+        'slug': 'support',
+        '_title': 'Поддержка',
+        'h1': 'Поддержка',
+        '_menu_title': 'Поддержка',
         'date_published': SITE_CREATED,
     },
 }

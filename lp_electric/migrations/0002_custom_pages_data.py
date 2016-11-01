@@ -11,7 +11,7 @@ from pages.models import CustomPage
 # Inspired by Django doc:
 # https://docs.djangoproject.com/en/1.9/ref/contrib/sites/#enabling-the-sites-framework
 def set_custom_pages(apps, schema_editor):
-    for fields in settings.PAGES.values():
+    for fields in settings.CUSTOM_PAGES.values():
         CustomPage.objects.create(**fields)
 
 
