@@ -10,6 +10,7 @@ from django.shortcuts import get_object_or_404, render
 
 from catalog.views import catalog, search
 from lp_electric.models import Category, Product
+from pages.models import CustomPage
 
 MODEL_MAP = {'product': Product, 'category': Category}
 
@@ -70,3 +71,10 @@ class ProductPage(catalog.ProductPage):
     #         **context,
     #         'page': product.page,
     #     }
+
+
+def jobs(request):
+    page = CustomPage.objects.get(slug='jobs')
+    return render(request, 'jobs.html', {
+        'page': page,
+    })

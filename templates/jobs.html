@@ -7,9 +7,14 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="item-content">
-            {% autoescape off %}
-              {{ page.content }}
-            {% endautoescape %}
+            {% for page in page.children.all %}
+              <div class="vacancy">
+                <h3>{{ page.h1 }}</h3>
+                {% autoescape off %}
+                  {{ page.content }}
+                {% endautoescape %}
+              </div>
+            {% endfor %}
           </div>
         </div>
       </div>

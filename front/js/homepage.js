@@ -27,7 +27,7 @@ function resizeMinWidth() {
 
     if ($(window).width() <= 1185) {
         $foot.css({
-            top: $(window).height() - $foot.outerHeight() - 81 + 'px'
+            top: $(window).height() - $foot.outerHeight() - 650 + 'px'
         });
     } else {
         $foot.attr('style', '');

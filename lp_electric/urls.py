@@ -20,6 +20,7 @@ from django.contrib import admin
 from django.views.generic.base import TemplateView
 
 from lp_electric import views
+from pages import urls as pages_urls
 
 
 catalog_urls = [
@@ -40,6 +41,8 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='index.html')),
     url(r'^admin/', admin.site.urls),
     url(r'^catalog/', include(catalog_urls)),
+    url(r'^pages/jobs/$', views.jobs),
+    url(r'^pages/', include(pages_urls)),
     url(r'^search/autocomplete/$', views.Autocomplete.as_view(), name='autocomplete'),
     url(r'^search/$', views.Search.as_view(), name='search'),
 ]

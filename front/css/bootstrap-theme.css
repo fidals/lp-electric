@@ -41,7 +41,7 @@ body * {
 }
 
 .site-wrapper.homepage .masthead {
-    margin-top: 11px;
+    /*margin-top: 11px;*/
 }
 
 .masthead nav {
@@ -434,14 +434,13 @@ body * {
 
 /* Pull out the header and footer */
 .site-wrapper.homepage .masthead {
-    position: absolute;
+    /*position: absolute;*/
     top: 0;
     left: 50%;
     margin-left: -592.5px;
 }
 
 .site-wrapper.homepage .mastfoot {
-    position: absolute;
     left: 0;
     bottom: 0;
 }

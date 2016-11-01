@@ -5,13 +5,14 @@ from __future__ import unicode_literals
 from django.db import migrations
 from django.conf import settings
 
+from pages.models import CustomPage
+
 
 # Inspired by Django doc:
 # https://docs.djangoproject.com/en/1.9/ref/contrib/sites/#enabling-the-sites-framework
 def set_custom_pages(apps, schema_editor):
-    Page = apps.get_model('pages', 'Page')
     for fields in settings.PAGES.values():
-        Page.objects.create(**fields)
+        CustomPage.objects.create(**fields)
 
 
 class Migration(migrations.Migration):

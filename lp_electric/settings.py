@@ -178,17 +178,21 @@ PAGES = {
     'category_tree': {
         'slug': 'category_tree',
         '_title': 'Каталог товаров',
+        'h1': 'Каталог товаров',
         '_menu_title': 'Каталог',
         'date_published': SITE_CREATED,
     },
     'search': {
         'slug': 'search',
         '_title': 'Результаты поиска',
+        'h1': 'Результаты поиска',
         'date_published': SITE_CREATED,
     },
-    'order': {
-        'slug': 'order',
-        '_title': 'Корзина Интернет-магазин shopelectro.ru Санкт-Петербург',
+    'jobs': {
+        'slug': 'jobs',
+        '_title': 'Вакансии',
+        'h1': 'Вакансии',
+        '_menu_title': 'Вакансии',
         'date_published': SITE_CREATED,
     },
 }
