@@ -262,6 +262,9 @@ FLAT_PAGES = {
         '_title': 'Поддержка',
         'h1': 'Поддержка',
         '_menu_title': 'Поддержка',
+        'content': '<p>Our maintain\n'
+                   'is very good\n'
+                   'for most of customers</p>',
         'date_published': SITE_CREATED,
     },
 }
