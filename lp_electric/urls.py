@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls import url, include
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic.base import TemplateView
@@ -37,15 +38,15 @@ catalog_urls = [
 
 admin.autodiscover()
 
-urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='index.html')),
+urlpatterns = i18n_patterns(
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^catalog/', include(catalog_urls)),
     url(r'^pages/jobs/$', views.jobs),
     url(r'^pages/', include(pages_urls)),
     url(r'^search/autocomplete/$', views.Autocomplete.as_view(), name='autocomplete'),
     url(r'^search/$', views.Search.as_view(), name='search'),
-]
+)
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,

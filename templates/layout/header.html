@@ -2,6 +2,8 @@
 {% load lp_extras %}
 {% load staticfiles %}
 {% roots as root_categories %}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <div class="masthead clearfix">
   <div class="inner">
@@ -37,9 +39,15 @@
     <div class="lang-line pull-left">
       <nav>
         <ul class="nav">
-          <li><a href="#">EN</a></li>
-          <li><a href="#">GER</a></li>
-          <li class="active"><a href="#">RUS</a></li>
+          {% for lang_code, _ in LANGUAGES %}
+            {% if lang_code == LANGUAGE_CODE %}
+              <li class="active"><a href="{% url 'index' %}">{{ lang_code|upper }}</a></li>
+            {% else %}
+              {% language lang_code %}
+                <li><a href="{% url 'index' %}">{{ lang_code|upper }}</a></li>
+              {% endlanguage %}
+            {% endif %}
+          {% endfor %}
         </ul>
       </nav>
     </div>

@@ -32,4 +32,4 @@ msgstr ""
 
 #: .\templates\layout\header.html:25
 msgid "Maintain"
-msgstr ""
+msgstr "Pflegen"
