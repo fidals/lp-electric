@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('lp_electric', '0001_initial'),
+        ('lp_electric', '0002_models_translation'),
     ]
 
     operations = [

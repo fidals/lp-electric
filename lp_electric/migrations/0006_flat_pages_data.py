@@ -43,7 +43,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('lp_electric', '0004_products_data'),
+        ('lp_electric', '0005_products_data'),
     ]
 
     operations = [

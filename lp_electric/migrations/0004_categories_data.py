@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('lp_electric', '0002_custom_pages_data'),
+        ('lp_electric', '0003_custom_pages_data'),
     ]
 
     operations = [

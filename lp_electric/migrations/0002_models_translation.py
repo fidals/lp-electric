@@ -7,8 +7,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
+    def __init__(self, *args, **kwargs):
+        super(Migration, self).__init__(*args, **kwargs)
+        self.app_label = 'pages'
+
     dependencies = [
-        ('lp_electric', '0005_flat_pages_data'),
+        ('lp_electric', '0001_initial'),
     ]
 
     operations = [
