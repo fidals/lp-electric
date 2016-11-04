@@ -39,6 +39,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin.apps.SimpleAdminConfig',
     # 'django.contrib.admin',
     'django.contrib.auth',
@@ -212,7 +213,6 @@ CUSTOM_PAGES = {
 }
 
 # Some defaults for autocreation struct pages: index, catalog tree
-# Pages with this data are created in DB only once.
 FLAT_PAGES = {
     'proger': {
         'slug': 'proger',
@@ -257,75 +257,79 @@ FLAT_PAGES = {
         '_menu_title': 'Доставка',
         'date_published': SITE_CREATED,
     },
-    'support': {
-        'slug': 'support',
-        '_title': 'Поддержка',
-        'h1': 'Поддержка',
+    'maintain': {
+        'slug': 'maintain',
+        'h1': 'Maintain',
+        'h1_en': 'Maintain',
+        'h1_de': 'Pflegen',
+        'h1_ru': 'Поддержка',
         '_menu_title': 'Поддержка',
-        'content': '<p>Our maintain\n'
-                   'is very good\n'
-                   'for most of customers</p>',
+        'content': 'Our support is very good for most of customers',
+        'content_en': 'Our support is very good for most of customers',
+        'content_de': 'Unsere Unterstützung ist sehr gut für die meisten Kunden',
+        'content_ru': 'Наша поддержка очень хороша почти для любого клиента',
         'date_published': SITE_CREATED,
     },
 }
+# Pages with this data are created in DB only once.
 
 # Custom categories for autocreation with data migrations.
 # We need OrderedDict here because of 'parent' key on child items
 CATEGORIES = OrderedDict([
     ('kitchen', {
         'slug': 'index',
-        'name': 'Кухня',
+        'name': 'kitchen',
         'position': 0,
     }),
     ('coffee_makers', {
         'slug': 'coffee-makers',
-        'name': 'Кофеварки',
+        'name': 'coffee-makers',
         'parent': 'kitchen',
         'position': 0,
     }),
     ('mixers', {
         'slug': 'mixers',
-        'name': 'Миксеры',
+        'name': 'mixers',
         'parent': 'kitchen',
         'position': 1,
     }),
     ('juicers', {
         'slug': 'juicers',
-        'name': 'Соковыжималки',
+        'name': 'juicers',
         'parent': 'kitchen',
         'position': 2,
     }),
     ('house', {
         'slug': 'house',
-        'name': 'Дом',
+        'name': 'house',
         'position': 1,
     }),
     ('irons', {
         'slug': 'irons',
-        'name': 'Утюги',
+        'name': 'irons',
         'parent': 'house',
         'position': 0,
     }),
     ('libra', {
         'slug': 'libra',
-        'name': 'Весы',
+        'name': 'libra',
         'parent': 'house',
         'position': 1,
     }),
     ('vacuum_cleaners', {
         'slug': 'vacuum-cleaners',
-        'name': 'Пылесосы',
+        'name': 'vacuum-cleaners',
         'parent': 'house',
         'position': 2,
     }),
     ('climate', {
         'slug': 'climate',
-        'name': 'Климат',
+        'name': 'climate',
         'position': 2,
     }),
     ('accessories', {
         'slug': 'accessories',
-        'name': 'Аксессуары',
+        'name': 'accessories',
         'position': 3,
     }),
 ])

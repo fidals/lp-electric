@@ -14,20 +14,20 @@
             <li class="{{ category.get_children|yesno:'dropdown,' }}">
               <a href="{{ category.url }}" class="dropdown-toggle" data-toggle="dropdown" role="button"
                  aria-haspopup="true" aria-expanded="false">
-                {% trans category.name %}
+                {{ category.page.h1 }}
               </a>
               <ul class="dropdown-menu">
                 {% for subcategory in category.get_children %}
                   <li>
                     <div class="picture"><img src="/static/images/categories/{{ subcategory.page.slug }}.png" alt="{{ category.name }}" title="{{ category.name }}"></div>
-                    <div>{% blocktrans %}{{ subcategory.name }}{% endblocktrans %}</div>
+                    <div>{{ subcategory.page.h1 }}</div>
                     <a href="{{ subcategory.url }}"></a>
                   </li>
                 {% endfor %}
               </ul>
             </li>
           {% endfor %}
-        <li><a href="/pages/support/">{% trans 'Maintain' %}</a></li>
+        <li><a href="{% url 'pages:flat_page' 'maintain' %}">{% trans 'Maintain' %}</a></li>
       </ul>
     </nav>
     <div class="search-line pull-left">

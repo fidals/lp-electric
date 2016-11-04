@@ -3,6 +3,7 @@ from django.contrib.contenttypes.admin import GenericStackedInline
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.utils.html import format_html
+from modeltranslation.admin import TranslationAdmin
 
 from lp_electric.models import (
     Category, Product, CategoryPage, ProductPage, Property)
@@ -92,12 +93,12 @@ class PropertyInline(admin.StackedInline):
 
 
 # --------------------- Model admin classes ---------------------
-class PageAdmin(admin.ModelAdmin):
+class PageAdmin(TranslationAdmin):
     save_on_top = True #  https://goo.gl/al9CEc
 
     list_filter = ['is_active']
-    list_display = ['id', 'h1', 'is_active']
-    list_display_links = ['h1']
+    list_display = ['id', 'h1', 'is_active', 'slug']
+    list_display_links = ['id', 'h1']
 
     inlines = [ImageInline]
 
@@ -150,6 +151,9 @@ class PageAdmin(admin.ModelAdmin):
 
 
 class CustomPageAdmin(PageAdmin):
+
+    readonly_fields = ['slug']
+
     # Fieldsets
     fieldsets = (
         ('Дополнительные характеристики', {
@@ -160,6 +164,7 @@ class CustomPageAdmin(PageAdmin):
                 '_menu_title',
                 'seo_text',
                 'position',
+                'slug',
                 ('parent', 'correct_parent_id')
             )
         }),
@@ -209,6 +214,7 @@ class FlatPageAdmin(PageAdmin):
                 '_menu_title',
                 'seo_text',
                 'position',
+                'slug',
                 ('parent', 'correct_parent_id')
             )
         }),
@@ -256,7 +262,7 @@ class ProductPageAdmin(PageAdmin):
 
     list_filter = ['is_active']
 
-    list_display = ['product_id', 'h1', 'custom_parent', 'price', 'links', 'is_active']
+    list_display = ['id', 'product_id', 'h1', 'custom_parent', 'price', 'links', 'is_active']
 
     search_fields = ['lp_electric_product__id', 'h1', 'parent__h1']
 
@@ -306,7 +312,7 @@ class CategoryPageAdmin(PageAdmin):
 
     search_fields = ['h1', 'parent__h1']
 
-    list_display = ['category_model_id', 'h1', 'custom_parent', 'is_active']
+    list_display = ['id', 'category_model_id', 'h1', 'custom_parent', 'is_active']
 
     # Custom fields
     def category_model_id(self, obj):
