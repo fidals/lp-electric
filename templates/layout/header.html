@@ -5,6 +5,7 @@
 {% get_available_languages as LANGUAGES %}
 {% get_current_language as LANGUAGE_CODE %}
 
+
 <div class="masthead clearfix">
   <div class="inner">
     <a href="/" class="masthead-brand">HOFFMANN ELECTRIC LP</a>
@@ -45,8 +46,10 @@
             {% if lang_code == LANGUAGE_CODE %}
               <li class="active"><a href="{% url 'index' %}">{{ lang_code|upper }}</a></li>
             {% else %}
+              {% resolve_url request as resolved_match %}
               {% language lang_code %}
-                <li><a href="{% url 'index' %}">{{ lang_code|upper }}</a></li>
+                {% translated_path request resolved_match as path %}
+                <li><a href="{{ path }}">{{ lang_code|upper }}</a></li>
               {% endlanguage %}
             {% endif %}
           {% endfor %}
