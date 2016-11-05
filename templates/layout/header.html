@@ -46,10 +46,8 @@
             {% if lang_code == LANGUAGE_CODE %}
               <li class="active"><a href="{% url 'index' %}">{{ lang_code|upper }}</a></li>
             {% else %}
-              {% resolve_url request as resolved_match %}
               {% language lang_code %}
-                {% translated_path request resolved_match as path %}
-                <li><a href="{{ path }}">{{ lang_code|upper }}</a></li>
+                <li><a href="{% url 'index' %}">{{ lang_code|upper }}</a></li>
               {% endlanguage %}
             {% endif %}
           {% endfor %}
