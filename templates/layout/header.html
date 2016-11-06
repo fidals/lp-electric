@@ -42,12 +42,14 @@
     <div class="lang-line pull-left">
       <nav>
         <ul class="nav">
+          {% resolve_url request as resolve_match %}
           {% for lang_code, _ in LANGUAGES %}
             {% if lang_code == LANGUAGE_CODE %}
               <li class="active"><a href="{% url 'index' %}">{{ lang_code|upper }}</a></li>
             {% else %}
               {% language lang_code %}
-                <li><a href="{% url 'index' %}">{{ lang_code|upper }}</a></li>
+                {% reverse_url resolve_match as path %}
+                <li><a href="{{ path }}">{{ lang_code|upper }}</a></li>
               {% endlanguage %}
             {% endif %}
           {% endfor %}
