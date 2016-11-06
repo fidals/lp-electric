@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-04 15:59+0300\n"
+"POT-Creation-Date: 2016-11-06 15:28+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,35 +20,50 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\lp_electric\settings.py:141
+#: .\lp_electric\settings.py:142
 msgid "English"
 msgstr ""
 
-#: .\lp_electric\settings.py:142
+#: .\lp_electric\settings.py:143
 msgid "German"
 msgstr ""
 
-#: .\lp_electric\settings.py:143
+#: .\lp_electric\settings.py:144
 msgid "Russian"
 msgstr ""
 
-msgid "Kitchen"
-msgstr "Кухня"
+#: .\templates\layout\footer.html:11
+msgid "About company"
+msgstr "О компании"
 
-msgid "Climate"
-msgstr "Климат"
+#: .\templates\layout\footer.html:13
+msgid "About"
+msgstr "О нас"
 
-msgid "Accessories"
-msgstr "Аксессуары"
+#: .\templates\layout\footer.html:14
+msgid "Jobs"
+msgstr "Вакансии"
 
-msgid "House"
-msgstr "Дом"
+#: .\templates\layout\footer.html:15
+msgid "Contacts"
+msgstr "Контакты"
 
-#: .\templates\layout\header.html:25
-#, python-format
-msgid "%(subcategory.name)s"
-msgstr ""
+#: .\templates\layout\footer.html:19
+msgid "For customers"
+msgstr "Покупателям"
 
-#: .\templates\layout\header.html:32
+#: .\templates\layout\footer.html:21
+msgid "Conditions"
+msgstr "Условия"
+
+#: .\templates\layout\footer.html:22
+msgid "Shipment"
+msgstr "Доставка"
+
+#: .\templates\layout\footer.html:23 .\templates\layout\header.html.py:31
 msgid "Maintain"
 msgstr "Поддержка"
+
+#: .\templates\layout\footer.html:27
+msgid "Catalog"
+msgstr "Каталог"
