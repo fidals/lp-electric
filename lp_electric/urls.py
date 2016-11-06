@@ -42,7 +42,7 @@ urlpatterns = i18n_patterns(
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^catalog/', include(catalog_urls)),
-    url(r'^pages/jobs/$', views.jobs),
+    url(r'^pages/jobs/$', views.jobs, name='jobs'),
     url(r'^pages/', include(pages_urls)),
     url(r'^search/autocomplete/$', views.Autocomplete.as_view(), name='autocomplete'),
     url(r'^search/$', views.Search.as_view(), name='search'),
