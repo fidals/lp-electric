@@ -22,6 +22,7 @@ from django.views.generic.base import TemplateView
 
 from lp_electric import views
 from pages import urls as pages_urls
+from pages.models import Page
 
 
 catalog_urls = [
@@ -36,17 +37,21 @@ catalog_urls = [
     #     name='products_without_text'),
 ]
 
-admin.autodiscover()
-
-urlpatterns = i18n_patterns(
+i18n_urlpatterns = i18n_patterns(
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
-    url(r'^admin/', admin.site.urls),
     url(r'^catalog/', include(catalog_urls)),
     url(r'^pages/jobs/$', views.jobs, name='jobs'),
     url(r'^pages/', include(pages_urls)),
-    url(r'^search/autocomplete/$', views.Autocomplete.as_view(), name='autocomplete'),
-    url(r'^search/$', views.Search.as_view(), name='search'),
+    url(r'^(?P<page>search)/$', views.Search.as_view(), name=Page.CUSTOM_PAGES_URL_NAME),
 )
+
+admin.autodiscover()
+
+urlpatterns = [
+    *i18n_urlpatterns,
+    url(r'^admin/', admin.site.urls),
+    url(r'^search/autocomplete/$', views.Autocomplete.as_view(), name='autocomplete'),
+]
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,

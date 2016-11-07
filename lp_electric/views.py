@@ -5,14 +5,15 @@ NOTE: They all should be 'zero-logic'.
 All logic should live in respective applications.
 """
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 
 from catalog.views import catalog, search
 from lp_electric.models import Category, Product
-from pages.models import CustomPage
+from pages.models import CustomPage, Page
 
-MODEL_MAP = {'product': Product, 'category': Category}
+MODEL_MAP = {'product': Product, 'category': Category, 'page': Page}
 
 
 # --------- search -----------
@@ -20,6 +21,27 @@ class Search(search.Search):
     """Override model references to SE-specific ones."""
     model_map = MODEL_MAP
     template_path = 'search/{}.html'
+
+    def get(self, request, *args, **kwargs):
+        term = request.GET.get('term')
+
+        if not term:
+            return redirect(reverse('index'), permanent=True)
+
+        categories, products = super(Search, self).search(term, self.search_limit)
+        self.object = self.get_object()
+
+        template = self.template_path.format(
+            'results' if categories or products else 'no_results')
+
+        context = self.get_context_data(object=self.object)
+        context.update({
+            'categories': categories,
+            'products': products,
+            'query': term
+        })
+
+        return render(request, template, context)
 
 
 class Autocomplete(search.Autocomplete):
