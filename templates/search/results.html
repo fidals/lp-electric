@@ -1,3 +1,5 @@
+{% load i18n %}
+
 {% extends 'layout/base.html' %}
 
 {% block content %}
@@ -6,7 +8,7 @@
       <div class="row">
         <div CLASS="col-lg-12">
           <div class="item-content">
-            <h1>Результаты поиска</h1>
+            <h1>{% trans 'Search results' %}</h1>
 
             {% for category in categories %}
               <p class="search-results-item">

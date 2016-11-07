@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-06 15:28+0300\n"
+"POT-Creation-Date: 2016-11-07 16:09+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,3 +67,11 @@ msgstr "Поддержка"
 #: .\templates\layout\footer.html:27
 msgid "Catalog"
 msgstr "Каталог"
+
+#: .\templates\search\no_results.html:7
+msgid "No search results"
+msgstr ""
+
+#: .\templates\search\results.html:11
+msgid "Search results"
+msgstr ""
