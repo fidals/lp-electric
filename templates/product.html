@@ -1,0 +1,51 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+  <div class="inner container">
+    <div class="tovar">
+      <h1>{{ page.h1 }}</h1>
+      <div class="row tov">
+        <div class="col-xs-6">
+          <div class="tovar-gallery">
+            <div class="tovar-foto">
+              {% for image in page.images.all %}
+                <div><img src="{{ image.image.url }}" height="244" alt="{{ page.h1 }}"></div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="tovar-param">
+            <ul class="opis-list">
+              {% for property in page.properties.all %}
+                <li><span>{{ property.name }}:</span> {{ property.value }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="item-content">
+                {% autoescape off %}{{ page.content }}{% endautoescape %}
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row grey">
+    <div class="dr-tovary">
+      <ul>
+        {% for sibling in product.siblings.all %}
+          <li class="other-tovar-item">
+            <a href="{{ sibling.url }}">
+              <img src="{{ sibling.page.main_image.url }}" alt="{{ sibling.name }}">
+              <p>{{ sibling.name }}</p>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}

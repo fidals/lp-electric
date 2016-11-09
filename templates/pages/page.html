@@ -1,0 +1,18 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+  <div class="inner container">
+    <div class="tovar">
+      <h1>{{ page.title }}</h1>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="item-content">
+            {% autoescape off %}
+              {{ page.content }}
+            {% endautoescape %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

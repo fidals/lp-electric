@@ -1,0 +1,46 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=1285, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/favicon.ico">
+
+  <title>LP electric</title>
+
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+  <link href="{% static 'css/fonts.css' %}" rel="stylesheet">
+  <link href="{% static 'css/cover.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-theme.css' %}" rel="stylesheet">
+  <link href="{% static 'js/slick/slick.css' %}" rel="stylesheet">
+  <link href="{% static 'js/slick/slick-theme.css' %}" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:700" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+<div class="site-wrapper homepage">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
+      {% include 'layout/header.html' %}
+      {% block content %}{% endblock %}
+      {% include 'layout/footer.html' %}
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{% static 'js/slick/slick.min.js' %}"></script>
+<script src="{% static 'js/homepage.js' %}"></script>
+<script src="{% static 'js/autocomplete/auto-complete.js' %}"></script>
+<script src="{% static 'js/autocomplete.js' %}"></script>
+</body>
+</html>

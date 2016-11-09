@@ -1,0 +1,60 @@
+{% load i18n %}
+{% load lp_extras %}
+{% load staticfiles %}
+{% roots as root_categories %}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language as LANGUAGE_CODE %}
+
+
+<div class="masthead clearfix">
+  <div class="inner">
+    <a href="/" class="masthead-brand">HOFFMANN ELECTRIC LP</a>
+    <nav class="pull-left">
+      <ul class="nav masthead-nav">
+          {% for category in root_categories %}
+            <li class="{{ category.get_children|yesno:'dropdown,' }}">
+              <a href="{{ category.url }}" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                 aria-haspopup="true" aria-expanded="false">
+                {{ category.page.h1 }}
+              </a>
+              <ul class="dropdown-menu">
+                {% for subcategory in category.get_children %}
+                  <li>
+                    <div class="picture"><img src="/static/images/categories/{{ subcategory.page.slug }}.png" alt="{{ category.name }}" title="{{ category.name }}"></div>
+                    <div>{{ subcategory.page.h1 }}</div>
+                    <a href="{{ subcategory.url }}"></a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </li>
+          {% endfor %}
+        <li><a href="{% url 'pages:flat_page' 'maintain' %}">{% trans 'Maintain' %}</a></li>
+      </ul>
+    </nav>
+    <div class="search-line pull-left">
+      <form name="search-line" action="/search/" method="get">
+        <div class="form-control">
+          <input type="submit" value="">
+          <input type="text" name="term" value="" class="f js-search-input">
+        </div>
+      </form>
+    </div>
+    <div class="lang-line pull-left">
+      <nav>
+        <ul class="nav">
+          {% resolve_url request as resolve_match %}
+          {% for lang_code, _ in LANGUAGES %}
+            {% if lang_code == LANGUAGE_CODE %}
+              <li class="active"><a href="{% url 'index' %}">{{ lang_code|upper }}</a></li>
+            {% else %}
+              {% language lang_code %}
+                {% reverse_url resolve_match as path %}
+                <li><a href="{{ path }}">{{ lang_code|upper }}</a></li>
+              {% endlanguage %}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
