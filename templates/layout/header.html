@@ -20,7 +20,12 @@
               <ul class="dropdown-menu">
                 {% for subcategory in category.get_children %}
                   <li>
-                    <div class="picture"><img src="/static/images/categories/{{ subcategory.page.slug }}.png" alt="{{ category.name }}" title="{{ category.name }}"></div>
+                    <div class="picture">
+                      <img src="{{ subcategory.page.main_image.url }}"
+                           alt="{{ category.name }}"
+                           title="{{ category.name }}"
+                           height="121">
+                    </div>
                     <div>{{ subcategory.page.h1 }}</div>
                     <a href="{{ subcategory.url }}"></a>
                   </li>

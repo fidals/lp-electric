@@ -3,7 +3,7 @@ from django.contrib.contenttypes.admin import GenericStackedInline
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.utils.html import format_html
-from modeltranslation.admin import TranslationAdmin
+from modeltranslation.admin import TranslationAdmin, TranslationStackedInline
 
 from lp_electric.models import (
     Category, Product, CategoryPage, ProductPage, Property)
@@ -82,7 +82,7 @@ class ImageInline(GenericStackedInline):
         )
 
 
-class PropertyInline(admin.StackedInline):
+class PropertyInline(TranslationStackedInline):
     model = Property
     fieldsets = ((None, {
         'classes': ('primary-chars',),
@@ -304,7 +304,7 @@ class ProductPageAdmin(PageAdmin):
 class CategoryPageAdmin(PageAdmin):
     inlines = [
         CategoryInline,
-        # ImageInline
+        ImageInline,
     ]
 
     search_fields = ['h1', 'parent__h1']
