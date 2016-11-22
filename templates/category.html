@@ -2,12 +2,12 @@
 
 {% block content %}
   <div class="inner container">
-    <div class="catalog-description">
-      {% autoescape off %}
-        {{ page.content }}
-      {% endautoescape %}
-    </div>
     <div class="catalog-list">
+      <div class="catalog-description">
+        {% autoescape off %}
+          {{ page.content }}
+        {% endautoescape %}
+      </div>
     {% if children %}
       {% for category in children %}
         <h2>{{ category.name }}</h2>
