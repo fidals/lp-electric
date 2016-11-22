@@ -8,6 +8,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
+from django.views.generic import DetailView
 
 from catalog.views import catalog, search
 from lp_electric.models import Category, Product
@@ -101,3 +102,12 @@ def jobs(request):
     return render(request, 'jobs.html', {
         'page': page,
     })
+
+
+class IndexPage(DetailView):
+    model = CustomPage
+    template_name = 'index.html'
+    context_object_name = 'page'
+
+    def get_object(self, queryset=None):
+        return CustomPage.objects.get(slug='index')
