@@ -309,7 +309,7 @@ class CategoryPageAdmin(PageAdmin):
 
     search_fields = ['h1', 'parent__h1']
 
-    list_display = ['id', 'category_model_id', 'h1', 'custom_parent', 'is_active']
+    list_display = ['id', 'category_model_id', 'h1', 'slug', 'custom_parent', 'is_active']
 
     # Custom fields
     def category_model_id(self, obj):
