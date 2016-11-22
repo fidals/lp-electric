@@ -28,19 +28,19 @@ msgstr ""
 
 #: .\templates\layout\footer.html:10
 msgid "About company"
-msgstr ""
+msgstr "Über die Firma"
 
 #: .\templates\layout\footer.html:12
 msgid "About"
-msgstr ""
+msgstr "Über"
 
 #: .\templates\layout\footer.html:13
 msgid "Contacts"
-msgstr ""
+msgstr "Kontakte"
 
 #: .\templates\layout\footer.html:17
 msgid "Catalog"
-msgstr ""
+msgstr "Katalog"
 
 #: .\templates\layout\footer.html:26
 msgid "Social networks"
