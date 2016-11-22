@@ -15,7 +15,7 @@
             <li class="{{ category.get_children|yesno:'dropdown,' }}">
               <a href="{{ category.url }}" class="dropdown-toggle" data-toggle="dropdown" role="button"
                  aria-haspopup="true" aria-expanded="false">
-                {{ category.page.h1 }}
+                {{ category.name }}
               </a>
               <ul class="dropdown-menu">
                 {% for subcategory in category.get_children %}
@@ -26,7 +26,7 @@
                            title="{{ category.name }}"
                            height="121">
                     </div>
-                    <div>{{ subcategory.page.h1 }}</div>
+                    <div>{{ subcategory.name }}</div>
                     <a href="{{ subcategory.url }}"></a>
                   </li>
                 {% endfor %}
