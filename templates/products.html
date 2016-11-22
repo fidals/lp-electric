@@ -1,3 +1,5 @@
+{% load i18n %}
+
 <div class="items">
   {% for product in category.products.all %}
     <div class="item">
@@ -9,8 +11,8 @@
           <div class="pseudo-td">
             <div class="description">
               <h3>{{ product.name }}</h3>
-              <p>Дополнительная информация</p>
-              <p class="more">Подробнее <i class="fa fa-angle-right" aria-hidden="true"></i></p>
+              <p>{% trans 'Additional Information' %}</p>
+              <p class="more">{% trans 'detail' %} <i class="fa fa-angle-right" aria-hidden="true"></i></p>
             </div>
           </div>
           <div class="pseudo-td">

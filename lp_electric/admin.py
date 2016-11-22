@@ -116,7 +116,6 @@ class PageAdmin(TranslationAdmin):
                 'date_published',
                 # 'slug', TODO in dev-775
                 '_menu_title',
-                'seo_text',
                 'position',
             )
         }),
@@ -162,7 +161,6 @@ class CustomPageAdmin(PageAdmin):
                 'is_active',
                 'date_published',
                 '_menu_title',
-                'seo_text',
                 'position',
                 'slug',
                 ('parent', 'correct_parent_id')
@@ -212,7 +210,6 @@ class FlatPageAdmin(PageAdmin):
                 'date_published',
                 # 'slug', TODO in dev-775
                 '_menu_title',
-                'seo_text',
                 'position',
                 'slug',
                 ('parent', 'correct_parent_id')

@@ -475,19 +475,19 @@ body * {
  * Catalog list items
  */
 
-.catalog-list .catalog-description {
+.catalog-description {
     margin: -10px auto 0;
     width: 960px;
 }
 
-.catalog-list .catalog-description h2 {
+.catalog-description h2 {
     margin: 0 0 12px;
     font-family: 'Conv_Proxima Nova Semibold';
     font-size: 18px;
     color: #c8c8c8;
 }
 
-.catalog-list .catalog-description p {
+.catalog-description p {
     font-family: 'Conv_Proxima Nova Light';
     font-size: 16px;
     color: #c8c8c8;
