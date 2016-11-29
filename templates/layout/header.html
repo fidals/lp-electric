@@ -15,15 +15,15 @@
             <li class="{{ category.get_children|yesno:'dropdown,' }}">
               <a href="{{ category.url }}" class="dropdown-toggle" data-toggle="dropdown" role="button"
                  aria-haspopup="true" aria-expanded="false">
-                {{ category.name }}
+                {{ category.h1 }}
               </a>
               <ul class="dropdown-menu">
                 {% for subcategory in category.get_children %}
                   <li>
                     <div class="picture">
                       <img src="{{ subcategory.page.main_image.url }}"
-                           alt="{{ category.name }}"
-                           title="{{ category.name }}"
+                           alt="{{ category.h1 }}"
+                           title="{{ category.h1 }}"
                            height="121">
                     </div>
                     <div>{{ subcategory.page.h1 }}</div>
