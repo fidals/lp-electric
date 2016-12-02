@@ -29,13 +29,14 @@ class Search(search.Search):
         if not term:
             return redirect(reverse('index'), permanent=True)
 
-        categories, products = super(Search, self).search(term, self.search_limit)
         self.object = self.get_object()
 
+        context = self.get_context_data(object=self.object)
+        categories = Category.objects.filter(page_h1__icontains=term)
+        products = Product.objects.filter(page_h1__icontains=term)
         template = self.template_path.format(
             'results' if categories or products else 'no_results')
 
-        context = self.get_context_data(object=self.object)
         context.update({
             'categories': categories,
             'products': products,
