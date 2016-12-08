@@ -21,9 +21,9 @@
                 {% for subcategory in category.get_children %}
                   <li>
                     <div class="picture">
-                      <img src="{{ subcategory.page.main_image.url }}"
-                           alt="{{ category.page.menu_title }}"
-                           title="{{ category.page.menu_title }}"
+                      <img src="{% category_image subcategory %}"
+                           alt="{{ subcategory.page.menu_title }}"
+                           title="{{ subcategory.page.menu_title }}"
                            height="121">
                     </div>
                     <div>{{ subcategory.page.menu_title }}</div>
