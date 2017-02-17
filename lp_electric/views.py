@@ -8,6 +8,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
+from django.views.generic import DetailView
 
 from catalog.views import catalog, search
 from lp_electric.models import Category, Product
@@ -28,13 +29,14 @@ class Search(search.Search):
         if not term:
             return redirect(reverse('index'), permanent=True)
 
-        categories, products = super(Search, self).search(term, self.search_limit)
         self.object = self.get_object()
 
+        context = self.get_context_data(object=self.object)
+        categories = Category.objects.filter(page__h1__icontains=term)
+        products = Product.objects.filter(page__h1__icontains=term)
         template = self.template_path.format(
             'results' if categories or products else 'no_results')
 
-        context = self.get_context_data(object=self.object)
         context.update({
             'categories': categories,
             'products': products,
@@ -101,3 +103,12 @@ def jobs(request):
     return render(request, 'jobs.html', {
         'page': page,
     })
+
+
+class IndexPage(DetailView):
+    model = CustomPage
+    template_name = 'index.html'
+    context_object_name = 'page'
+
+    def get_object(self, queryset=None):
+        return CustomPage.objects.get(slug='index')

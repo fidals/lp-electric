@@ -24,3 +24,12 @@ def reverse_url(resolve_match):
         else m.url_name
     )
     return reverse(url_name, args=m.args, kwargs=m.kwargs)
+
+
+@register.assignment_tag
+def category_image(category):
+    image_file = category.page.main_image
+    if image_file:
+        return image_file.url
+    else:
+        return ''

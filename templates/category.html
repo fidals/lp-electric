@@ -4,19 +4,24 @@
   <div class="inner container">
     <div class="catalog-list">
     {% if children %}
+      <div class="catalog-description">
+        {% autoescape off %}
+          {{ page.content }}
+        {% endautoescape %}
+      </div>
       {% for category in children %}
-        <h2>{{ category.name }}</h2>
+        <h2>{{ category.page.h1 }}</h2>
         {% include 'products.html' with category=category only %}
       {% endfor %}
     {% else %}
-      <h1>{{ category.name }}</h1>
+      <h1>{{ category.page.h1 }}</h1>
+      <div class="catalog-description">
+        {% autoescape off %}
+          {{ page.content }}
+        {% endautoescape %}
+      </div>
       {% include 'products.html' with category=category only %}
     {% endif %}
-     <div class="catalog-description">
-       {% autoescape off %}
-        {{ page.content }}
-       {% endautoescape %}
-      </div>
     </div>
   </div>
 {% endblock %}

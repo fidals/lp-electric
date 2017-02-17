@@ -3,7 +3,7 @@ from django.contrib.contenttypes.admin import GenericStackedInline
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.utils.html import format_html
-from modeltranslation.admin import TranslationAdmin
+from modeltranslation.admin import TranslationAdmin, TranslationStackedInline
 
 from lp_electric.models import (
     Category, Product, CategoryPage, ProductPage, Property)
@@ -82,7 +82,7 @@ class ImageInline(GenericStackedInline):
         )
 
 
-class PropertyInline(admin.StackedInline):
+class PropertyInline(TranslationStackedInline):
     model = Property
     fieldsets = ((None, {
         'classes': ('primary-chars',),
@@ -116,7 +116,6 @@ class PageAdmin(TranslationAdmin):
                 'date_published',
                 # 'slug', TODO in dev-775
                 '_menu_title',
-                'seo_text',
                 'position',
             )
         }),
@@ -162,7 +161,6 @@ class CustomPageAdmin(PageAdmin):
                 'is_active',
                 'date_published',
                 '_menu_title',
-                'seo_text',
                 'position',
                 'slug',
                 ('parent', 'correct_parent_id')
@@ -212,7 +210,6 @@ class FlatPageAdmin(PageAdmin):
                 'date_published',
                 # 'slug', TODO in dev-775
                 '_menu_title',
-                'seo_text',
                 'position',
                 'slug',
                 ('parent', 'correct_parent_id')
@@ -307,12 +304,12 @@ class ProductPageAdmin(PageAdmin):
 class CategoryPageAdmin(PageAdmin):
     inlines = [
         CategoryInline,
-        # ImageInline
+        ImageInline,
     ]
 
     search_fields = ['h1', 'parent__h1']
 
-    list_display = ['id', 'category_model_id', 'h1', 'custom_parent', 'is_active']
+    list_display = ['id', 'category_model_id', 'h1', 'slug', 'custom_parent', 'is_active']
 
     # Custom fields
     def category_model_id(self, obj):

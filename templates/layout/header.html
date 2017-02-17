@@ -8,27 +8,31 @@
 
 <div class="masthead clearfix">
   <div class="inner">
-    <a href="/" class="masthead-brand">HOFFMANN ELECTRIC LP</a>
+    <a href="/" class="masthead-brand"><img src="/static/images/Muveqqeti_w.png" title="HOFFMANN" alt="HOFFMANN" height="auto" width="180"></a>
     <nav class="pull-left">
       <ul class="nav masthead-nav">
           {% for category in root_categories %}
             <li class="{{ category.get_children|yesno:'dropdown,' }}">
               <a href="{{ category.url }}" class="dropdown-toggle" data-toggle="dropdown" role="button"
                  aria-haspopup="true" aria-expanded="false">
-                {{ category.page.h1 }}
+                {{ category.page.menu_title }}
               </a>
               <ul class="dropdown-menu">
                 {% for subcategory in category.get_children %}
                   <li>
-                    <div class="picture"><img src="/static/images/categories/{{ subcategory.page.slug }}.png" alt="{{ category.name }}" title="{{ category.name }}"></div>
-                    <div>{{ subcategory.page.h1 }}</div>
+                    <div class="picture">
+                      <img src="{% category_image subcategory %}"
+                           alt="{{ subcategory.page.menu_title }}"
+                           title="{{ subcategory.page.menu_title }}"
+                           height="121">
+                    </div>
+                    <div>{{ subcategory.page.menu_title }}</div>
                     <a href="{{ subcategory.url }}"></a>
                   </li>
                 {% endfor %}
               </ul>
             </li>
           {% endfor %}
-        <li><a href="{% url 'pages:flat_page' 'maintain' %}">{% trans 'Maintain' %}</a></li>
       </ul>
     </nav>
     <div class="search-line pull-left">

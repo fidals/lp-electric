@@ -33,7 +33,7 @@ DEBUG = True
 # http://bit.ly/sorl-thumbnail-docs
 THUMBNAIL_DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

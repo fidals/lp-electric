@@ -38,7 +38,7 @@ catalog_urls = [
 ]
 
 i18n_urlpatterns = i18n_patterns(
-    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url(r'^$', views.IndexPage.as_view(), name='index'),
     url(r'^catalog/', include(catalog_urls)),
     url(r'^pages/jobs/$', views.jobs, name='jobs'),
     url(r'^pages/', include(pages_urls)),

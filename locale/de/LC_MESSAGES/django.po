@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-07 16:09+0300\n"
+"POT-Creation-Date: 2016-11-29 14:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,45 +26,37 @@ msgstr ""
 msgid "German"
 msgstr ""
 
-#: .\lp_electric\settings.py:144
-msgid "Russian"
-msgstr ""
+#: .\templates\404.html:10
+msgid "404 Page not found"
+msgstr "404-Seite nicht gefunden"
 
-#: .\templates\layout\footer.html:11
+#: .\templates\layout\footer.html:10
 msgid "About company"
-msgstr ""
+msgstr "Über die Firma"
+
+#: .\templates\layout\footer.html:12
+msgid "About"
+msgstr "Über"
 
 #: .\templates\layout\footer.html:13
-msgid "About"
-msgstr ""
-
-#: .\templates\layout\footer.html:14
-msgid "Jobs"
-msgstr ""
-
-#: .\templates\layout\footer.html:15
 msgid "Contacts"
-msgstr ""
+msgstr "Kontakte"
 
-#: .\templates\layout\footer.html:19
-msgid "For customers"
-msgstr ""
-
-#: .\templates\layout\footer.html:21
-msgid "Conditions"
-msgstr ""
-
-#: .\templates\layout\footer.html:22
-msgid "Shipment"
-msgstr ""
-
-#: .\templates\layout\footer.html:23 .\templates\layout\header.html.py:31
-msgid "Maintain"
-msgstr "Pflegen"
-
-#: .\templates\layout\footer.html:27
+#: .\templates\layout\footer.html:17
 msgid "Catalog"
-msgstr ""
+msgstr "Katalog"
+
+#: .\templates\layout\footer.html:26
+msgid "Social networks"
+msgstr "Rückkopplung"
+
+#: .\templates\products.html:14
+msgid "Additional Information"
+msgstr "Weitere Informationen"
+
+#: .\templates\products.html:15
+msgid "detail"
+msgstr "mehr"
 
 #: .\templates\search\no_results.html:7
 msgid "No search results"
@@ -73,3 +65,6 @@ msgstr ""
 #: .\templates\search\results.html:11
 msgid "Search results"
 msgstr ""
+
+#~ msgid "Maintain"
+#~ msgstr "Pflegen"
