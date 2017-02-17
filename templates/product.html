@@ -9,7 +9,7 @@
           <div class="tovar-gallery">
             <div class="tovar-foto">
               {% for image in page.images.all %}
-                <div><img src="{{ image.image.url }}" height="244" alt="{{ page.h1 }}"></div>
+                <div><a class="first1" title="{{ page.h1 }}" href="{{image.image.url}}"> <img src="{{ image.image.url }}" height="244" alt="{{ page.h1 }}"></a></div>
               {% endfor %}
             </div>
           </div>
@@ -34,18 +34,4 @@
     </div>
   </div>
 
-  <div class="row grey">
-    <div class="dr-tovary">
-      <ul>
-        {% for sibling in product.siblings.all %}
-          <li class="other-tovar-item">
-            <a href="{{ sibling.url }}">
-              <img src="{{ sibling.page.main_image.url }}" alt="{{ sibling.name }}">
-              <p>{{ sibling.name }}</p>
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
 {% endblock %}

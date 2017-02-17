@@ -32,8 +32,8 @@ class Search(search.Search):
         self.object = self.get_object()
 
         context = self.get_context_data(object=self.object)
-        categories = Category.objects.filter(page_h1__icontains=term)
-        products = Product.objects.filter(page_h1__icontains=term)
+        categories = Category.objects.filter(page__h1__icontains=term)
+        products = Product.objects.filter(page__h1__icontains=term)
         template = self.template_path.format(
             'results' if categories or products else 'no_results')
 

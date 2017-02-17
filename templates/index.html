@@ -34,22 +34,35 @@
     <div class="cover-container">
       {% include 'layout/header.html' %}
       <div class="inner cover">
-        <div class="slider">
+        <div class="regular">
           {% for image in page.images.all %}
-            <div class="one-slide"
-                 style="background-image: url({{ image.image.url }})">
-            </div>
+            <div class="one-slide" style="background-image: url({{ image.image.url }});"></div>
           {% endfor %}
         </div>
       </div>
-<div style="height: 710px"></div>      {% include 'layout/footer.html' %}
+      {% include 'layout/footer.html' %}
     </div>
   </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="{% static 'js/slick/slick.min.js' %}"></script>
-<script src="{% static 'js/homepage.js' %}"></script>
-<script src="{% static 'js/autocomplete/auto-complete.js' %}"></script>
-<script src="{% static 'js/autocomplete.js' %}"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'js/slick/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slick/slick.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/homepage.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/autocomplete/auto-complete.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/autocomplete.js' %}"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".regular").slick({
+	autoplay: true,
+	autoplaySpeed: 3000,
+	slidesToShow: 1,
+	slidesToScroll: 1,
+	fade: true,
+	cssEase: 'linear'
+  });
+});
+</script>
 </body>
 </html>
