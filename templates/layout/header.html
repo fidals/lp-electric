@@ -9,24 +9,33 @@
 <div class="masthead clearfix">
   <div class="inner">
     <a href="/" class="masthead-brand"><img src="/static/images/Muveqqeti_w.png" title="HOFFMANN" alt="HOFFMANN" height="auto" width="180"></a>
-    <nav class="pull-left">
+    <div class="navbar-header mobile-menu">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-topmenu-mob" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="navbar-topmenu" class="pull-left navbar-collapse collapse hidden-xs">
+      <a href="javascript:void(0);" class="mobile-menu-close"></a>
       <ul class="nav masthead-nav">
           {% for category in root_categories %}
             <li class="{{ category.get_children|yesno:'dropdown,' }}">
               <a href="{{ category.url }}" class="dropdown-toggle" data-toggle="dropdown" role="button"
                  aria-haspopup="true" aria-expanded="false">
-                {{ category.page.menu_title }}
+                {{ category.name }}
               </a>
               <ul class="dropdown-menu">
                 {% for subcategory in category.get_children %}
                   <li>
                     <div class="picture">
-                      <img src="{% category_image subcategory %}"
-                           alt="{{ subcategory.page.menu_title }}"
-                           title="{{ subcategory.page.menu_title }}"
+                      <img src="{{ subcategory.page.main_image.url }}"
+                           alt="{{ category.name }}"
+                           title="{{ category.name }}"
                            height="121">
                     </div>
-                    <div>{{ subcategory.page.menu_title }}</div>
+                    <div>{{ subcategory.page.h1 }}</div>
                     <a href="{{ subcategory.url }}"></a>
                   </li>
                 {% endfor %}
@@ -35,6 +44,41 @@
           {% endfor %}
       </ul>
     </nav>
+      <nav id="navbar-topmenu-mob" class="pull-left navbar-collapse collapse visible-xs">
+          <a href="javascript:void(0);" class="mobile-menu-close"></a>
+          <div class="mob-menu-title">
+              <h2>{% trans 'Catalog' %}</h2>
+          </div>
+          <div class="search-line-mob pull-left">
+              <form name="search-line" action="/search/" method="get">
+                  <div class="form-control">
+                      <input type="submit" value="">
+                      <input type="text" name="term" value="" class="f js-search-input">
+                  </div>
+              </form>
+          </div>
+          <ul id="accordion" class="nav masthead-nav accordion">
+              {% for category in root_categories %}
+              <li class="{{ category.get_children|yesno:'dropdown,' }}">
+                  <div class="link"><i class="fa fa-database"></i>{{ category.name }}<i class="fa fa-chevron-down"></i></div>
+                  <ul class="submenu">
+                      {% for subcategory in category.get_children %}
+                      <li>
+                          <a href="{{ subcategory.url }}">{{ subcategory.page.h1 }}</a>
+                      </li>
+                      {% endfor %}
+                  </ul>
+              </li>
+              {% endfor %}
+          </ul>
+          <div class="mob-menu-title">
+          <h2>{% trans 'About company' %}</h2>
+          </div>
+          <ul class="mob-menu-2">
+              <li><a href="{% url 'pages:flat_page' 'about' %}">{% trans 'About' %}</a></li>
+              <li><a href="{% url 'pages:flat_page' 'contacts' %}">{% trans 'Contacts' %}</a></li>
+          </ul>
+      </nav>
     <div class="search-line pull-left">
       <form name="search-line" action="/search/" method="get">
         <div class="form-control">

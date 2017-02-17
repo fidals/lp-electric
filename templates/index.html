@@ -1,11 +1,11 @@
 {% load staticfiles %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="homepage">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=1285, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="keywords" content="{{ page.keywords }}">
   <meta name="description" content="{{ page.description }}">
   <meta name="author" content="">
@@ -16,6 +16,7 @@
   <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
   <link href="{% static 'css/fonts.css' %}" rel="stylesheet">
   <link href="{% static 'css/cover.css' %}" rel="stylesheet">
+  <link href="{% static 'css/adaptive-yaroslav.css' %}" rel="stylesheet">
   <link href="{% static 'css/bootstrap-theme.css' %}" rel="stylesheet">
   <link href="{% static 'js/slick/slick.css' %}" rel="stylesheet">
   <link href="{% static 'js/slick/slick-theme.css' %}" rel="stylesheet">
@@ -36,7 +37,7 @@
       <div class="inner cover">
         <div class="regular">
           {% for image in page.images.all %}
-            <div class="one-slide" style="background-image: url({{ image.image.url }});"></div>
+          <div class="one-slide" style="background-image: url({{ image.image.url }});"></div>
           {% endfor %}
         </div>
       </div>
@@ -53,16 +54,16 @@
 <script type="text/javascript" src="{% static 'js/autocomplete/auto-complete.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/autocomplete.js' %}"></script>
 <script type="text/javascript">
-$(document).ready(function(){
-  $(".regular").slick({
-	autoplay: true,
-	autoplaySpeed: 3000,
-	slidesToShow: 1,
-	slidesToScroll: 1,
-	fade: true,
-	cssEase: 'linear'
+  $(document).ready(function(){
+    $(".regular").slick({
+      autoplay: true,
+      autoplaySpeed: 3000,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      fade: true,
+      cssEase: 'linear'
+    });
   });
-});
 </script>
 </body>
 </html>

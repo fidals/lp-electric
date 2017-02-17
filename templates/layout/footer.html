@@ -6,14 +6,14 @@
 <div class="mastfoot">
   <div class="inner">
     <div class="pull-left">
-      <nav class="pull-left">
+      <nav class="pull-left about">
         <span class="title">{% trans 'About company' %}</span>
         <ul class="nav">
           <li><a href="{% url 'pages:flat_page' 'about' %}">{% trans 'About' %}</a></li>
           <li><a href="{% url 'pages:flat_page' 'contacts' %}">{% trans 'Contacts' %}</a></li>
         </ul>
       </nav>
-      <nav class="pull-left">
+      <nav class="pull-left catalog">
         <span class="title">{% trans 'Catalog' %}</span>
         <ul class="nav">
           {% for category in root_categories %}
@@ -23,6 +23,11 @@
       </nav>
     </div>
     <div class="pull-right">
+      <h2>{% trans 'Social networks' %}</h2>
+      <div class="social">
+        <a href="#" class="fb" target="_blank"></a>
+        <a href="#" class="insta" target="_blank"></a>
+      </div>
     </div>
     <div class="clearfix"></div>
   </div>
